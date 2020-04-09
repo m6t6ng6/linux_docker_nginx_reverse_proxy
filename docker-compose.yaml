@@ -1,0 +1,50 @@
+nginx-proxy:
+  image: jwilder/nginx-proxy 
+  restart: always
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    - /root/.server//nginx-ssl/certs:/etc/nginx/certs:ro
+    - /root/.server/nginx-ssl/certs
+    - /etc/nginx/vhost.d
+    - /usr/share/nginx/html
+  labels:
+    - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy 
+
+letsencrypt:
+  image: linuxserver/letsencrypt
+  restart: always
+  volumes:
+    - /root/.server/nginx-ssl/certs:/etc/nginx/certs:rw
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+  volumes_from:
+    - nginx-proxy:rw
+  environment:
+     - DEFAULT_EMAIL=ferna2909@hotmail.com
+
+www1:
+  image: nginx
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /root/.server/docker-share/html1:/usr/share/nginx/html:ro
+    #- /home/pi/git/docker/nginx-ssl/1/www:/usr/share/nginx/html:ro
+  environment:
+    - VIRTUAL_HOST=ecommerce.matanga.net.ar
+    - LETSENCRYPT_HOST=ecommerce.matanga.net.ar
+    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+www2:
+  image: nginx
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /root/.server/docker-share/html2:/usr/share/nginx/html:ro
+  environment:
+    - VIRTUAL_HOST=dolarhoy.matanga.net.ar
+    - LETSENCRYPT_HOST=dolarhoy.matanga.net.ar
+    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
