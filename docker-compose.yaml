@@ -30,8 +30,8 @@ www1:
   expose:
     - "80"
   volumes:
-    - /root/.server/docker-share/html1:/usr/share/nginx/html:ro
-    #- /home/pi/git/docker/nginx-ssl/1/www:/usr/share/nginx/html:ro
+    - /root/.server/docker-share/html1/production:/usr/share/nginx/html:ro
+    #- /root/.server/docker-share/html1/maintenance:/usr/share/nginx/html:ro
   environment:
     - VIRTUAL_HOST=ecommerce.matanga.net.ar
     - LETSENCRYPT_HOST=ecommerce.matanga.net.ar
@@ -43,7 +43,8 @@ www2:
   expose:
     - "80"
   volumes:
-    - /root/.server/docker-share/html2:/usr/share/nginx/html:ro
+    - /root/.server/docker-share/html2/production:/usr/share/nginx/html:ro
+      #- /root/.server/docker-share/html2/maintenance:/usr/share/nginx/html:ro
   environment:
     - VIRTUAL_HOST=dolarhoy.matanga.net.ar
     - LETSENCRYPT_HOST=dolarhoy.matanga.net.ar
