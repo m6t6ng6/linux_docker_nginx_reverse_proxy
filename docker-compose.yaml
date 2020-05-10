@@ -75,3 +75,16 @@ www4:
     - VIRTUAL_HOST=reloj.matanga.net.ar
     - LETSENCRYPT_HOST=reloj.matanga.net.ar
     - LETSENCRYPT_EMAIL=ferna2909@hotmail.com 
+
+www5:
+  image: nginx
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /root/.server/docker-share/html3/uade-29-abril-2020/ejercitacion_calculadora:/usr/share/nginx/html:ro
+    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  environment:
+    - VIRTUAL_HOST=calculadora.matanga.net.ar
+    - LETSENCRYPT_HOST=calculadora.matanga.net.ar
+    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
