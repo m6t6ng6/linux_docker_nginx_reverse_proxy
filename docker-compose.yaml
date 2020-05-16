@@ -88,3 +88,16 @@ www5:
     - VIRTUAL_HOST=calculadora.matanga.net.ar
     - LETSENCRYPT_HOST=calculadora.matanga.net.ar
     - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+www6:
+  image: nginx
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /root/.server/docker-share/html3/uade-15-mayo-2020/ejercitacion_tateti:/usr/share/nginx/html:ro
+    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  environment:
+    - VIRTUAL_HOST=tateti.matanga.net.ar
+    - LETSENCRYPT_HOST=tateti.matanga.net.ar
+    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
