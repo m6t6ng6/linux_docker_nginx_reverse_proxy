@@ -101,3 +101,29 @@ www6:
     - VIRTUAL_HOST=tateti.matanga.net.ar
     - LETSENCRYPT_HOST=tateti.matanga.net.ar
     - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+www7:
+  image: nginx
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /root/.server/docker-share/html3/uade-15-mayo-2020/ejercitacion_primos:/usr/share/nginx/html:ro
+    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  environment:
+    - VIRTUAL_HOST=primos.matanga.net.ar
+    - LETSENCRYPT_HOST=primos.matanga.net.ar
+    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+www8:
+  image: nginx
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /root/.server/docker-share/html4/uade-tp-final:/usr/share/nginx/html:ro
+    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  environment:
+    - VIRTUAL_HOST=whales.matanga.net.ar
+    - LETSENCRYPT_HOST=whales.matanga.net.ar
+    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
