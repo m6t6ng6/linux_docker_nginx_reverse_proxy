@@ -121,7 +121,7 @@ www8:
   expose:
     - "80"
   volumes:
-    - /root/.server/docker-share/html4/uade-tp-final:/usr/share/nginx/html:ro
+    - /root/.server/docker-share/html4:/usr/share/nginx/html:ro
     #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
   environment:
     - VIRTUAL_HOST=whales.matanga.net.ar
